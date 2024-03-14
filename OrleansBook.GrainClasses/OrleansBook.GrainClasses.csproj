@@ -9,6 +9,8 @@
   <ItemGroup>
 
     <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="8.0.0" />
+
+    <PackageReference Include="Microsoft.Orleans.Persistence.AzureStorage" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

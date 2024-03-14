@@ -9,7 +9,10 @@ IHostBuilder builder = new HostBuilder()
        {
            options.Port = 8083;
        })
-       .ConfigureLogging(logging => logging.AddConsole());
+       .ConfigureLogging(logging => logging.AddConsole())
+       .AddAzureTableGrainStorage("robotStore", options=>{
+            options.ConfigureTableServiceClient("UseDevelopmentStorage=true");
+       });
        
       
     })

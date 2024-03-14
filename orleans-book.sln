@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansBook.Host", "Orleans
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansBook.Client", "OrleansBook.Client\OrleansBook.Client.csproj", "{3BC17427-79FA-4B09-8293-942BCDBB22D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansBook.WebApi", "OrleansBook.WebApi\OrleansBook.WebApi.csproj", "{D355F1F3-AEBE-4308-9192-8EA5F138123D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3BC17427-79FA-4B09-8293-942BCDBB22D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BC17427-79FA-4B09-8293-942BCDBB22D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BC17427-79FA-4B09-8293-942BCDBB22D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D355F1F3-AEBE-4308-9192-8EA5F138123D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D355F1F3-AEBE-4308-9192-8EA5F138123D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D355F1F3-AEBE-4308-9192-8EA5F138123D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D355F1F3-AEBE-4308-9192-8EA5F138123D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

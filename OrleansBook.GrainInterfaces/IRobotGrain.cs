@@ -7,4 +7,9 @@ namespace OrleansBook.GrainInterfaces
         Task<string> GetNextInstruction();
         Task<int> GetInstructionCount();
     }
+
+    public class StorageValue
+    {
+        public string Value { get; set; }
+    }
 }
