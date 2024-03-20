@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrleansBook.GrainClasses
 {
+    [GenerateSerializer]
     public class RobotState
     {
         public Queue<string> Instructions { get; set; } = new Queue<string>();

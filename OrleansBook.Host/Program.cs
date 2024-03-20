@@ -12,7 +12,9 @@ IHostBuilder builder = new HostBuilder()
        .ConfigureLogging(logging => logging.AddConsole())
        .AddAzureTableGrainStorage("robotStore", options=>{
             options.ConfigureTableServiceClient("UseDevelopmentStorage=true");
-       });
+       }).AddMemoryStreams("StreamProvider");
+       
+       
        
       
     })
