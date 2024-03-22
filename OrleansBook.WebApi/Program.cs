@@ -10,16 +10,17 @@ builder.Services.AddSwaggerGen();
 builder.Host.UseOrleans(static siloBuilder =>
 {
   siloBuilder.UseLocalhostClustering();
-       siloBuilder.UseDashboard(options =>
-       {
-           options.Port = 8083;
-       })
-       .ConfigureLogging(logging => logging.AddConsole())
-       .AddAzureTableGrainStorage("robotStateStore", options=>{
-            options.ConfigureTableServiceClient("UseDevelopmentStorage=true");
-       })
-       .AddMemoryStreams("StreamProvider")
-     .AddMemoryGrainStorage("PubSubStore")
+    siloBuilder.UseDashboard(options =>
+    {
+        options.Port = 8083;
+    })
+    .ConfigureLogging(logging => logging.AddConsole())
+    .AddAzureTableGrainStorage("robotStateStore", options => {
+        options.ConfigureTableServiceClient("UseDevelopmentStorage=true");
+    })
+    .AddMemoryStreams("StreamProvider")
+  .AddMemoryGrainStorage("PubSubStore")
+  .AddLogStorageBasedLogConsistencyProvider("LogStorage")
      .UseInMemoryReminderService()
      .UseTransactions();
 
@@ -37,12 +38,14 @@ app.UseHttpsRedirection();
 
 app.MapGet("/robot/{name}/instruction", (IGrainFactory grain, string name) =>
 {
-    var robot = grain.GetGrain<IRobotGrain>(name);
+    //var robot = grain.GetGrain<IRobotGrain>(name);
+    var robot = grain.GetGrain<IRobotGrain>(name, "OrleansBook.GrainClasses.EventSourcedGrain");
     return robot.GetNextInstruction();
 });
 app.MapPost("/robot/{name}/instruction", async (IGrainFactory grain, string name, StorageValue value) =>
 {
-    var robot = grain.GetGrain<IRobotGrain>(name);
+   // var robot = grain.GetGrain<IRobotGrain>(name);
+    var robot = grain.GetGrain<IRobotGrain>(name, "OrleansBook.GrainClasses.EventSourcedGrain");
     await robot.AddInstruction(value.Value);
     return Results.Ok();
 });

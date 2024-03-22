@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Orleans.Runtime;
 using Orleans.TestingHost;
+using Orleans.Transactions.Abstractions;
 using OrleansBook.GrainClasses;
 using OrleansBook.GrainInterfaces;
 
@@ -51,14 +52,17 @@ namespace OrleansBook.Tests
 
     class SiloBuilderConfigurator : ISiloConfigurator
     {
-        public void Configure(ISiloBuilder hostBuilder)
+        public void Configure(ISiloBuilder siloBuilder)
         {
-            hostBuilder.AddMemoryGrainStorage("robotStateStore");
-            var mockState = new Mock<IPersistentState<RobotState>>();
-            mockState.SetupGet(s => s.State).Returns(new RobotState());
-            hostBuilder.ConfigureServices(services =>
+            siloBuilder.UseTransactions();
+            siloBuilder.AddMemoryGrainStorage("robotStateStore");
+            //var mockState = new Mock<IPersistentState<RobotState>>();
+            //mockState.SetupGet(s => s.State).Returns(new RobotState());
+            var mockState = new Mock<ITransactionalState<RobotState>>();
+            var mockRobotState = new RobotState();
+            siloBuilder.ConfigureServices(services =>
             {
-                services.AddSingleton<IPersistentState<RobotState>>(mockState.Object);
+                //services.AddSingleton<IPersistentState<RobotState>>(mockState.Object);
                 services.AddSingleton<ILogger<RobotGrain>>(
                     new Mock<ILogger<RobotGrain>>().Object
                 );

@@ -10,10 +10,10 @@ IHostBuilder builder = new HostBuilder()
            options.Port = 8083;
        })
        .ConfigureLogging(logging => logging.AddConsole())
-       .AddAzureTableGrainStorage("robotStore", options=>{
+       .AddAzureTableGrainStorage("robotStateStore", options=>{
             options.ConfigureTableServiceClient("UseDevelopmentStorage=true");
        }).AddMemoryStreams("StreamProvider");
-       
+        silo.UseTransactions();
        
        
       
