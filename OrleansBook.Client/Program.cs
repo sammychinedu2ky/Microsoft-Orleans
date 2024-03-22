@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.Streams;
-using OrleansBook.GrainClasses;
 using OrleansBook.GrainInterfaces;
 namespace OrleansBook.Client
 {
@@ -16,13 +15,13 @@ namespace OrleansBook.Client
       })
       .Build();
             await host.StartAsync();
-            
+
             IClusterClient client = host.Services.GetRequiredService<IClusterClient>();
             // var grain = client.GetGrain<IRobotGrain>("rob1");
             // var id =  grain.GetPrimaryKeyString();
             var subHandle = await client.GetStreamProvider("StreamProvider")
                 .GetStream<InstructionMessage>("MyNameSpace", "rob1").SubscribeAsync(new StreamObserver());
-                await subHandle.ResumeAsync(new StreamObserver());
+            await subHandle.ResumeAsync(new StreamObserver());
             while (true)
             {
                 Console.WriteLine("Please enter a robot name...");

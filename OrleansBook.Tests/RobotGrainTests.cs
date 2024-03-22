@@ -1,9 +1,7 @@
-using Castle.Core.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Orleans.Runtime;
 using Orleans.TestingHost;
 using Orleans.Transactions.Abstractions;
 using OrleansBook.GrainClasses;

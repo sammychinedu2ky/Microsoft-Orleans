@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrleansBook.GrainClasses
+﻿namespace OrleansBook.GrainClasses
 {
     [GenerateSerializer]
     public class EventSourcedState
@@ -15,7 +9,7 @@ namespace OrleansBook.GrainClasses
         public void Apply(EnqueueEvent @event) => this.instructions.Enqueue(@event.Value);
         public void Apply(DequeueEvent @event)
         {
-            if(this.instructions.Count == 0) return;
+            if (this.instructions.Count == 0) return;
             @event.Value = this.instructions.Dequeue();
         }
     }

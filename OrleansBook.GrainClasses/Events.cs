@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrleansBook.GrainClasses
+﻿namespace OrleansBook.GrainClasses
 {
     public interface IEvent
     {
@@ -24,6 +18,6 @@ namespace OrleansBook.GrainClasses
     {
         [Id(0)]
         public string Value { get; set; }
-        public DequeueEvent() { }   
+        public DequeueEvent() { }
     }
 }

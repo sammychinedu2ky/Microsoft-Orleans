@@ -1,4 +1,3 @@
-using Orleans;
 namespace OrleansBook.GrainInterfaces
 {
     public interface IBatchGrain : IGrainWithIntegerKey

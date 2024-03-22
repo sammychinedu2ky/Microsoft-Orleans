@@ -1,4 +1,3 @@
-using Orleans;
 using Orleans.Concurrency;
 using OrleansBook.GrainInterfaces;
 namespace OrleansBook.GrainClasses

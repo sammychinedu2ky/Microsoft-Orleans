@@ -1,5 +1,4 @@
-﻿using Orleans;
-namespace OrleansBook.GrainInterfaces
+﻿namespace OrleansBook.GrainInterfaces
 {
     public interface ISubscriberGrain : IGrainWithStringKey
     { }
@@ -11,7 +10,7 @@ namespace OrleansBook.GrainInterfaces
 
         [Transaction(TransactionOption.CreateOrJoin)]
         Task<string> GetNextInstruction();
-        
+
         [Transaction(TransactionOption.CreateOrJoin)]
         Task<int> GetInstructionCount();
     }
